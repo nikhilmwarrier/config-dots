@@ -9,6 +9,12 @@ set autoindent              " indent a new line the same amount as the line just
 
 " ------ KEYMAPS ------
 
+" quick quit
+nnoremap q :q<CR>
+
+" quick save
+nnoremap <C-s> :w<CR>
+
 " toggle wrap
 nnoremap <A-w> :set wrap!<CR>
 
@@ -66,3 +72,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Syntax highlighting in markdown code fences
+let g:markdown_fenced_languages = ['bash=sh', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'ts=typescript', 'php', 'html', 'css']
