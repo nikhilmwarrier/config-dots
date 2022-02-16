@@ -6,6 +6,8 @@ set softtabstop=4           " see multiple spaces as tabstops so <BS> does the r
 set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
+set mouse+=a                " mouse support
+    set nocompatible            " disable vi compibility mode
 
 " ------ KEYMAPS ------
 
@@ -14,7 +16,8 @@ nnoremap q :q<CR>
 
 " quick save
 nnoremap <C-s> :w<CR>
-
+inoremap <C-s> <Esc>:w<CR>i
+vnoremap <C-s> :w<CR>
 " toggle wrap
 nnoremap <A-w> :set wrap!<CR>
 
@@ -41,20 +44,22 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
  nnoremap <C-l> <C-w>l
 
 " Press i to enter insert mode, and ii to exit insert mode.
-:inoremap ii <Esc>
-:inoremap jk <Esc>
-:inoremap kj <Esc>
-:vnoremap jk <Esc>
-:vnoremap kj <Esc>  
+" :inoremap ii <Esc>
 
 " NERDTree
-nnoremap b :NERDTreeToggle<CR>
+nnoremap B :NERDTreeToggle<CR>
+
+" FZF
+nnoremap E :Files<CR>
 
 " ------ Plugins ------
 call plug#begin()                   
     Plug 'tomasiser/vim-code-dark'      " Colorscheme
     Plug 'scrooloose/nerdtree'          " NERDTree as file manager
     Plug 'preservim/nerdcommenter'      " Comments shortcut
+    Plug 'itchyny/lightline.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " ------ Plugins/NERDTree ------
